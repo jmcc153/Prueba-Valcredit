@@ -20,7 +20,7 @@ export const Table = ({data, labels, handleDelete = () => {}, handleEdit= () => 
         <tbody>
           {
             data.map((user,index) => {
-              return <tr key={user.numberId}>
+              return <tr key={index}>
                 {Object.entries(user).map(([key,value]) => (
                   key == 'status' ? <td className={user.status == 'Pagado' ? styles.paid : styles.pending} key={key}>{value}</td> : <td key={key}>{value}</td>
               ))
