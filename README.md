@@ -9,6 +9,7 @@ Este proyecto es una aplicación React construida con Vite. Incluye característ
 1. Clonar el repositorio: `git clone https://github.com/nombredeusuario/proyecto.git`
 2. Instalar las dependencias: `npm install`
 3. Iniciar el servidor: `npm run dev`
+4. Para iniciar sesión las credenciales de usuario y contraseña son "admin".
 
 ## Estructura del proyecto
 
@@ -27,15 +28,15 @@ Este proyecto es una aplicación React construida con Vite. Incluye característ
 ## Características
 
 - Autenticación de Usuarios: Los usuarios pueden iniciar y cerrar sesión en la aplicación.
-- Gestión de Datos: La aplicación obtiene y muestra los datos del usuario desde un archivo local ([`src/lib/data.js`](src/lib/data.js)).
+- Gestión de Datos: La aplicación obtiene y muestra los datos de los usuarios, modifica la información de los usuarios, crea nuevos usuarios y elimina usuarios.
 - Interfaz de Usuario Adaptable: La aplicación tiene un diseño adaptable que se ajusta a diferentes tamaños de pantalla.
 
 ## Componentes
 
 - [`ModalForm`](src/components/modalForm/ModalForm.jsx): Un formulario para la entrada de datos del usuario.
 - [`ModalAlert`](src/components/modalAlert/ModalAlert.jsx): Un modal para mostrar alertas al usuario.
-- [`Pagination`](src/components/pagination/Pagination.jsx): Un componente para manejar la paginación de datos.
-- [`Sidebar`](src/components/sidebar/Sidebar.jsx): Una barra lateral para la navegación.
+- [`Pagination`](src/components/pagination/Pagination.jsx): Un componente para manejar la paginación de la tabla.
+- [`Sidebar`](src/components/sidebar/Sidebar.jsx): Una barra lateral sencilla para la navegación.
 
 ## Páginas
 
@@ -49,13 +50,5 @@ Este proyecto es una aplicación React construida con Vite. Incluye característ
 
 ## Estilos
 
-Los estilos se gestionan utilizando SCSS. Los estilos principales se pueden encontrar en [`src/styles/index.scss`](src/styles/index.scss).
-
-## Contribuir
-
-Las contribuciones son bienvenidas. Por favor, abre un problema o envía una solicitud de extracción.
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT.
+Los estilos se gestionan utilizando SCSS. cada carpeta y página tiene sus propios estilos, los estilos globales se pueden encontrar en [`src/styles/index.scss`](src/styles/index.scss).
 
