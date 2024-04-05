@@ -1,0 +1,109 @@
+@import 'styles/colors.scss';
+@mixin sidebarStyle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 250px;
+    min-height: 100vh;
+    background-color: $secondaryColor;
+    color: white;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box
+}
+
+.sidebar{
+    @include sidebarStyle;
+    position: sticky;
+    max-width: 0;
+    overflow: hidden;
+    transform: translateX(-100%);
+    &.active{
+        @include sidebarStyle;
+        max-width: 250px;
+        position: sticky;
+        transform: translateX(0);
+    }
+    .sidebarItems{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        height: 100%;
+        svg{
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            &:hover{
+                background-color: $primaryColor;
+                color: $secondaryColor;
+            }
+        }
+    }
+    .items{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        li{
+            text-wrap: nowrap;
+            a{
+                color: white;
+                text-decoration: none;
+                font-size: 1.2rem;
+                font-weight: 500;
+                padding: 10px;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+                &:hover{
+                    background-color: $primaryColor;
+                }
+            }
+        }
+    }
+    .logout{
+        padding: 20px 0;
+        button{
+            background: none;
+            color: white;
+            border: none;
+            transition: all 0.3s;
+            &:hover{
+                background-color: $primaryColor;
+                color: $secondaryColor;
+            }
+        }
+    }
+}
+.containerHambIcon{
+    display: flex;
+    gap: 20px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 100;
+    svg{
+        font-size: 1.5rem;
+        color: $secondaryColor;
+    }
+}
+.hidden{
+    display: none;
+}

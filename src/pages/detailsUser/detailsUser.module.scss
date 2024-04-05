@@ -1,0 +1,94 @@
+@import 'styles/colors.scss';
+
+.container{
+  display: flex;
+  width: 100vw;
+  gap: 20px;
+  box-sizing: border-box;
+
+  .containerInfo{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    .imgProfile{
+      width: 180px;
+      height: 180px;
+      padding: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: $secondaryColor;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .info{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      gap: 10px;
+      padding: 20px;
+      border-radius: 10px;
+      box-sizing: border-box;
+      max-height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      .details{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        padding: 20px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        p{
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
+        @media screen and (max-width: 768px){
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      @media screen and (max-width: 768px){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    .containerTables{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 20px;
+      width: 100%;
+      padding: 20px;
+      background-color: white;
+      color: $secondaryColor;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      overflow-x: auto;
+      @media screen and (max-width: 768px){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .containerTable{
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
