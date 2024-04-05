@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import styles from "./login.module.scss";
 import { LoginContext } from "contexts/LoginContext";
+import { modalContext } from "contexts/modalContext";
 import { useContext } from "react";
 import CryptoJS from 'crypto-js';
 import { useNavigate } from "react-router-dom";
@@ -8,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 export const Login = () => {
   const { register, handleSubmit, formState:{errors}  } = useForm();
   const {setIsLogged} = useContext(LoginContext);
+  const {setIsModalAlert} = useContext(modalContext);
   const navigate = useNavigate();
 
 
@@ -20,7 +22,11 @@ export const Login = () => {
       navigate('/listusers');
     }
     else{
-      alert('Usuario o contraseña incorrectos');
+      setIsModalAlert({
+        isOpen: true,
+        title: 'Error',
+        message: 'Usuario o contraseña incorrectos'
+      })
     }
   }
 

@@ -4,7 +4,6 @@ import { modalContext } from 'contexts/modalContext';
 import { useContext } from 'react';
 import { LoginContext } from 'contexts/LoginContext';
 export const ModalForm = ({register, handleSubmit, errors,isEdit, userEdit}) => {
-  
   const { setIsOpen, setIsModalAlert } = useContext(modalContext)
   const {isUser,setIsUser} = useContext(LoginContext);
 
@@ -22,35 +21,14 @@ export const ModalForm = ({register, handleSubmit, errors,isEdit, userEdit}) => 
     { type: 'email', name: 'email', label: 'Correo electronico', pattern: { value: '', message: '' } },
     { type: 'number', name: 'phoneNumber', label: 'Numero de telefono', pattern: { value: /^\d{10}$/, message: 'Debe insertar 10 dígitos' }}
   ]
-  const onSubmit = (data) => {
+  const parseData = (data) => {
     data.numberId = parseFloat(data.numberId)
     data.age = parseInt(data.age)
     data.phoneNumber = parseInt(data.phoneNumber)
-    if(isEdit){
-      const users = JSON.parse(localStorage.getItem('users'))
-      const newUser = users.map(user => {
-        if(user.numberId === userEdit.numberId){
-          if(user.birthdayDate !== data.birthdayDate){
-            const date = new Date(data.birthdayDate)
-            data.age = new Date().getFullYear() - date.getFullYear()
-          }
-          return {
-            ...user,
-            ...data
-          }
-        }
-        return user
-      })
-      localStorage.setItem('users', JSON.stringify(newUser))
-      setIsOpen(false)
-      setIsModalAlert({
-        isOpen: true,
-        title: 'Usuario editado',
-        message: 'El usuario ha sido editado exitosamente'
-      })
-      setIsUser(!isUser)
-      return
-    }
+    return data
+  }
+  const onSubmit = (data) => {
+    data = parseData(data)
     const users = JSON.parse(localStorage.getItem('users')) || []
     if(users.find(user => user.numberId === data.numberId)){
       setIsModalAlert({
@@ -99,6 +77,34 @@ export const ModalForm = ({register, handleSubmit, errors,isEdit, userEdit}) => 
     setIsUser(!isUser)
   }
 
+  const onEdit = (data) => {
+    data = parseData(data)
+    const users = JSON.parse(localStorage.getItem('users'))
+      const newUser = users.map(user => {
+        if(user.numberId === userEdit.numberId){
+          if(user.birthdayDate !== data.birthdayDate){
+            const date = new Date(data.birthdayDate)
+            data.age = new Date().getFullYear() - date.getFullYear()
+          }
+          return {
+            ...user,
+            ...data
+          }
+        }
+        return user
+      })
+      localStorage.setItem('users', JSON.stringify(newUser))
+      setIsOpen(false)
+      setIsModalAlert({
+        isOpen: true,
+        title: 'Usuario editado',
+        message: 'El usuario ha sido editado exitosamente'
+      })
+      setIsUser(!isUser)
+      return
+  }
+
+
 
 
 
@@ -108,7 +114,7 @@ export const ModalForm = ({register, handleSubmit, errors,isEdit, userEdit}) => 
     <div className={styles.modalContainer}>
       <div className={styles.modal}>
         <FiXCircle onClick={() => setIsOpen(false)} className={styles.close} />
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.containerInput}>
+        <form onSubmit={handleSubmit(isEdit ? onEdit : onSubmit)} className={styles.containerInput}>
           <label htmlFor="typeId">Tipo de documento</label>
           <select {...register('typeId', { required:  {value: true, message: 'Este campo es requerido'} })} name="typeId" id="typeId">
             {options.map((option, index) => (
