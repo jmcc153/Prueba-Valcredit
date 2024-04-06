@@ -9,7 +9,7 @@ Este proyecto es una aplicación React construida con Vite. Incluye característ
 1. Clonar el repositorio: `git clone https://github.com/nombredeusuario/proyecto.git`
 2. Instalar las dependencias: `npm install`
 3. Iniciar el servidor: `npm run dev`
-4. Para iniciar sesión las credenciales de usuario y contraseña son "admin".
+4. *Para iniciar sesión las credenciales de usuario y contraseña son "admin"*.
 
 ## Estructura del proyecto
 
